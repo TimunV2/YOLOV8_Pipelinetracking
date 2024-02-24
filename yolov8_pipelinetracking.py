@@ -22,7 +22,7 @@ while True:
     success, frame = cap.read()
 
     if success:
-        # resize the frame
+        # resize the frame to match the model
         frame = cv2.resize(frame, (640, 384))
         # Run YOLOv8 inference on the frame
         results = model(frame, max_det=2)
