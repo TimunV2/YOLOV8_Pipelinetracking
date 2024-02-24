@@ -22,9 +22,10 @@ while True:
     success, frame = cap.read()
 
     if success:
-        # Run YOLOv8 tracking on the frame, persisting tracks between frames
+        # resize the frame
         frame = cv2.resize(frame, (640, 384))
-        results = model.track(frame, persist=True)
+        # Run YOLOv8 inference on the frame
+        results = model(frame, max_det=2)
 
         # Visualize the results on the frame
         annotated_frame = results[0].plot()
